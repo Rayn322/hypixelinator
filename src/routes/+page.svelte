@@ -11,8 +11,9 @@
 
 	function onSubmit() {
 		loading = true;
-		if (username.length > 0) {
-			goto(`/${username}`);
+		const trimmed = username.trim();
+		if (trimmed.length > 0) {
+			goto(`/${trimmed}`);
 		} else {
 			loading = false;
 		}
@@ -28,6 +29,7 @@
 				placeholder="Username"
 				id="username"
 				bind:value={username}
+				autocomplete="off"
 			/>
 		</Card.Content>
 		<Card.Footer>

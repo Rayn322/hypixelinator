@@ -1,6 +1,7 @@
 <script lang="ts">
 	import PlayerName from '$lib/components/PlayerName.svelte';
 	import * as Card from '$lib/components/ui/card';
+	import { parseGameType } from '$lib/util/status.js';
 
 	export let data;
 </script>
@@ -17,6 +18,16 @@
 		{#if data.status.online}
 			<Card.Description>
 				<span class="text-green-500">Online</span>
+				<span>•</span>
+				{#if data.status.mode === 'LOBBY'}
+					<span>In the {parseGameType(data.status.gameType)} lobby</span>
+				{:else}
+					<span>Playing {parseGameType(data.status.gameType)}</span>
+					{#if data.status.map && data.status.map !== 'Base'}
+						<span>on {data.status.map}</span>
+					{/if}
+				{/if}
+				<p>raw: {data.status.gameType}</p>
 			</Card.Description>
 		{:else}
 			<Card.Description>
