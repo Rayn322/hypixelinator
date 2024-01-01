@@ -1,13 +1,19 @@
 <script lang="ts">
-	import RankText from '$lib/components/RankText.svelte';
+	import PlayerName from '$lib/components/PlayerName.svelte';
 	import * as Card from '$lib/components/ui/card';
 
 	export let data;
 </script>
 
-<Card.Root>
+<Card.Root class="max-w-md">
 	<Card.Header>
-		<Card.Title>{data.name}</Card.Title>
+		<Card.Title>
+			<PlayerName
+				name={data.name}
+				rank={data.rank}
+				plusColor={data.plusColor}
+			/>
+		</Card.Title>
 		{#if data.status.online}
 			<Card.Description>
 				<span class="text-green-500">Online</span>
@@ -15,7 +21,6 @@
 		{:else}
 			<Card.Description>
 				<span class="text-red-500">Offline</span>
-				<RankText rank={data.rank} plusColor={data.plusColor} />
 			</Card.Description>
 		{/if}
 	</Card.Header>

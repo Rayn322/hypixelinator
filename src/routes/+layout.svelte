@@ -6,7 +6,7 @@
 <ModeWatcher />
 <header class="border-b p-4">
 	<h1 class="text-xl">
-		<a href="/">Hypixel Stats</a>
+		<a href="/">Hypixelinator</a>
 	</h1>
 </header>
 <main class="p-4">
